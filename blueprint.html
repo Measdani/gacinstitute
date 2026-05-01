@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Facility — GA Catalyst Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #1B3A6B;
+    --gold: #F5A623;
+    --gold-dim: rgba(245,166,35,0.15);
+    --gold-border: rgba(245,166,35,0.4);
+    --blue-line: rgba(100,160,255,0.12);
+    --blue-border: rgba(100,160,255,0.35);
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(180,210,255,0.7);
+    --text-muted: rgba(100,150,200,0.5);
+    --grid-size: 32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--blue-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--blue-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--blue-border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  .nav-wordmark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .nav-wordmark span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    font-weight: 500 !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding: 140px 40px 60px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--gold);
+    border: 1px solid var(--gold-border);
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--blue-border);
+  }
+
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* ── BLUEPRINT PANEL ── */
+  .blueprint-panel {
+    background: rgba(10,22,40,0.8);
+    border: 1px solid var(--blue-border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blueprint-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(100,160,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(100,160,255,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+
+  .bp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .bp-title-wrap { }
+
+  .bp-title {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .bp-subtitle {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .compass {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--blue-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* ── FLOOR PLAN ── */
+  .floor-plan {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1.05;
+    border: 1.5px solid rgba(100,160,255,0.4);
+    border-radius: 4px;
+    overflow: visible;
+  }
+
+  .room {
+    position: absolute;
+    border: 1px solid rgba(100,160,255,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  .room:hover, .room.active {
+    z-index: 20;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(245,166,35,0.2);
+  }
+
+  .room.active { border-width: 2px !important; }
+
+  .room-icon { font-size: 14px; margin-bottom: 3px; line-height: 1; }
+  .room-name { font-size: 8px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; line-height: 1.3; margin-bottom: 2px; }
+  .room-sub { font-size: 7px; opacity: 0.6; letter-spacing: 0.3px; line-height: 1.3; }
+
+  .sponsor-pill {
+    margin-top: 4px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 7px;
+    letter-spacing: 0.3px;
+    background: rgba(245,166,35,0.15);
+    color: var(--gold);
+    border: 1px solid rgba(245,166,35,0.3);
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .room:hover .sponsor-pill { background: rgba(245,166,35,0.3); }
+
+  /* Room color themes */
+  .r-gold { background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.5) !important; }
+  .r-gold .room-name { color: #F5A623; }
+
+  .r-blue { background: rgba(56,140,255,0.08); border-color: rgba(56,140,255,0.4) !important; }
+  .r-blue .room-name { color: #6BB8FF; }
+
+  .r-teal { background: rgba(29,158,117,0.1); border-color: rgba(29,158,117,0.5) !important; }
+  .r-teal .room-name { color: #3DCFA0; }
+
+  .r-purple { background: rgba(127,119,221,0.1); border-color: rgba(127,119,221,0.5) !important; }
+  .r-purple .room-name { color: #A89FEE; }
+
+  .r-coral { background: rgba(216,90,48,0.1); border-color: rgba(216,90,48,0.5) !important; }
+  .r-coral .room-name { color: #F08060; }
+
+  .r-green { background: rgba(99,153,34,0.1); border-color: rgba(99,153,34,0.5) !important; }
+  .r-green .room-name { color: #8DC44A; }
+
+  .r-silver { background: rgba(180,190,210,0.06); border-color: rgba(180,190,210,0.3) !important; }
+  .r-silver .room-name { color: rgba(200,215,235,0.85); }
+
+  .r-pink { background: rgba(212,83,126,0.09); border-color: rgba(212,83,126,0.45) !important; }
+  .r-pink .room-name { color: #E87AA8; }
+
+  /* Corridor */
+  .corridor {
+    position: absolute;
+    background: rgba(100,160,255,0.04);
+    border: 1px dashed rgba(100,160,255,0.15);
+  }
+
+  .zone-tag {
+    position: absolute;
+    font-size: 7px;
+    color: rgba(100,160,255,0.35);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  /* Entry door */
+  .entry-door {
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .door-line { width: 2px; height: 18px; background: var(--gold); opacity: 0.7; }
+
+  .door-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 10px;
+    white-space: nowrap;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .legend-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── DETAIL PANEL ── */
+  .detail-panel {
+    position: sticky;
+    top: 90px;
+  }
+
+  .detail-card {
+    background: rgba(10,22,40,0.9);
+    border: 1px solid var(--blue-border);
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 400px;
+  }
+
+  .detail-default {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    text-align: center;
+    min-height: 400px;
+  }
+
+  .detail-default .hint-icon {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--blue-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  .detail-default h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .detail-default p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .detail-content { display: none; }
+
+  .detail-header {
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--blue-border);
+    position: relative;
+  }
+
+  .detail-color-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .detail-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .detail-room-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .detail-sponsor-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .detail-body { padding: 20px 24px; }
+
+  .detail-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .detail-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--blue-border);
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    background: rgba(100,160,255,0.05);
+  }
+
+  .detail-outcomes { margin-bottom: 24px; }
+
+  .detail-outcomes-title {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .outcome-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .outcome-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .outcome-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .detail-cta {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--gold);
+    color: var(--navy);
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .detail-cta:hover { opacity: 0.85; }
+
+  .detail-cta-ghost {
+    display: block;
+    width: 100%;
+    padding: 11px;
+    background: transparent;
+    color: var(--text-secondary);
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid var(--blue-border);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .detail-cta-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── PARTNER STRIP ── */
+  .partner-strip {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+  }
+
+  .partner-strip-inner {
+    border: 1px dashed var(--gold-border);
+    border-radius: 8px;
+    padding: 28px 40px;
+    text-align: center;
+    background: var(--gold-dim);
+  }
+
+  .partner-strip h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .partner-strip p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    font-weight: 300;
+  }
+
+  .partner-strip a {
+    display: inline-block;
+    padding: 12px 32px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .partner-strip a:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--blue-border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+  }
+
+  .footer-brand span { color: var(--gold); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .main-wrap, .partner-strip {
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .main-wrap { animation-delay: 0.15s; }
+  .partner-strip { animation-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .main-wrap { grid-template-columns: 1fr; }
+    .detail-panel { position: static; }
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 40px; }
+    .main-wrap, .partner-strip { padding: 0 20px 60px; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/gaci-small-logo.png" alt="GA Catalyst Institute">
+    <span class="nav-wordmark">GA <span>CATALYST</span> INSTITUTE</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="blueprint.html" class="active">Facility</a></li>
+    <li><a href="partner-with-us.html">Partner</a></li>
+    <li><a href="apply.html">Apply</a></li>
+    <li><a href="impact.html">Impact</a></li>
+    <li><a href="partner-with-us.html" class="nav-cta">Become a Partner</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Facility Blueprint · Est. 2029</div>
+  <h1>Where <em>Atlanta's</em> talent<br>comes to be built.</h1>
+  <p>GA Catalyst Institute is a badged, earned-access facility where every room has a purpose, every door requires a credential, and every graduate is ready for a career that was designed with the companies hiring them.</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">12</span>
+      <span class="hero-stat-label">Named rooms</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">10</span>
+      <span class="hero-stat-label">Sponsor spots</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">200+</span>
+      <span class="hero-stat-label">Annual participants</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">2029</span>
+      <span class="hero-stat-label">Target open</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN: BLUEPRINT + DETAIL -->
+<div class="main-wrap">
+
+  <!-- BLUEPRINT PANEL -->
+  <div class="blueprint-panel">
+    <div class="bp-header">
+      <div class="bp-title-wrap">
+        <div class="bp-title">GA Catalyst Institute</div>
+        <div class="bp-subtitle">Floor plan concept · Atlanta, Georgia</div>
+      </div>
+      <div class="compass">N</div>
+    </div>
+
+    <div class="floor-plan" id="floorplan">
+
+      <!-- ENTRY -->
+      <div class="room r-gold active" id="room-entry"
+        style="left:37%;width:26%;bottom:0;height:8%;border-bottom:none;"
+        onclick="selectRoom('entry')">
+        <div class="room-name">Badge Entry Vestibule</div>
+        <div class="room-sub">Diagonal door · Badge access</div>
+        <div class="entry-door">
+          <div class="door-line"></div>
+          <div class="door-badge">⬡ SWIPE TO ENTER</div>
+        </div>
+      </div>
+
+      <!-- CORRIDOR -->
+      <div class="corridor" style="left:0;right:0;bottom:8%;height:7%;"></div>
+      <div class="zone-tag" style="bottom:10%;left:1%;">Main corridor</div>
+
+      <!-- LEFT WING -->
+      <div class="zone-tag" style="top:1%;left:1%;">Youth wing</div>
+
+      <div class="room r-blue" id="room-robotics"
+        style="left:2%;top:4%;width:22%;height:26%;"
+        onclick="selectRoom('robotics')">
+        <div class="room-icon">🤖</div>
+        <div class="room-name">Advanced Robotics Lab</div>
+        <div class="room-sub">Robotics · Hardware · Coding</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <div class="room r-teal" id="room-builders"
+        style="left:2%;top:32%;width:22%;height:22%;"
+        onclick="selectRoom('builders')">
+        <div class="room-icon">⚡</div>
+        <div class="room-name">Future Builders Lab</div>
+        <div class="room-sub">Youth STEM · Grades 3–8</div>
+      </div>
+
+      <div class="room r-coral" id="room-weekend"
+        style="left:2%;top:56%;width:22%;height:17%;"
+        onclick="selectRoom('weekend')">
+        <div class="room-icon">🛡</div>
+        <div class="room-name">Weekend Track Studio</div>
+        <div class="room-sub">Earned access · Badge start</div>
+      </div>
+
+      <!-- CENTER TOP -->
+      <div class="zone-tag" style="top:1%;left:27%;">Corporate workforce labs</div>
+
+      <div class="room r-gold" id="room-energy"
+        style="left:26%;top:4%;width:23%;height:24%;"
+        onclick="selectRoom('energy')">
+        <div class="room-icon">⚡</div>
+        <div class="room-name">Energy Systems Lab</div>
+        <div class="room-sub">Smart grid · Power infrastructure</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <div class="room r-pink" id="room-health"
+        style="left:51%;top:4%;width:23%;height:24%;"
+        onclick="selectRoom('health')">
+        <div class="room-icon">🏥</div>
+        <div class="room-name">Healthcare Technology Lab</div>
+        <div class="room-sub">Biomedical · Health IT · Devices</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <!-- RIGHT WING -->
+      <div class="zone-tag" style="top:1%;right:1%;">Adult workforce wing</div>
+
+      <div class="room r-purple" id="room-aviation"
+        style="right:2%;top:4%;width:22%;height:26%;"
+        onclick="selectRoom('aviation')">
+        <div class="room-icon">✈</div>
+        <div class="room-name">Aviation & Tech Innovation Lab</div>
+        <div class="room-sub">Aviation tech · IT ops · Logistics</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <div class="room r-blue" id="room-connectivity"
+        style="right:2%;top:32%;width:22%;height:22%;"
+        onclick="selectRoom('connectivity')">
+        <div class="room-icon">📡</div>
+        <div class="room-name">Digital Connectivity Lab</div>
+        <div class="room-sub">Networks · Media tech · Digital literacy</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <div class="room r-silver" id="room-safety"
+        style="right:2%;top:56%;width:22%;height:17%;"
+        onclick="selectRoom('safety')">
+        <div class="room-icon">🖥</div>
+        <div class="room-name">Public Safety Tech Center</div>
+        <div class="room-sub">Civilian tech · Data · Dispatch</div>
+      </div>
+
+      <!-- CENTER MIDDLE -->
+      <div class="room r-green" id="room-maker"
+        style="left:26%;top:30%;width:23%;height:22%;"
+        onclick="selectRoom('maker')">
+        <div class="room-icon">🔧</div>
+        <div class="room-name">Maker Space</div>
+        <div class="room-sub">3D printing · Open build · Prototyping</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <div class="room r-coral" id="room-build"
+        style="left:51%;top:30%;width:23%;height:22%;"
+        onclick="selectRoom('build')">
+        <div class="room-icon">🏗</div>
+        <div class="room-name">Construction Technology Lab</div>
+        <div class="room-sub">Trades tech · Smart home systems</div>
+        <div class="sponsor-pill">+ Founding sponsor open</div>
+      </div>
+
+      <!-- BOTTOM CENTER -->
+      <div class="room r-pink" id="room-brain"
+        style="left:26%;top:54%;width:23%;height:19%;"
+        onclick="selectRoom('brain')">
+        <div class="room-icon">🧠</div>
+        <div class="room-name">Brain Break Lab</div>
+        <div class="room-sub">Licensed therapist · Wellness</div>
+      </div>
+
+      <div class="room r-silver" id="room-common"
+        style="left:51%;top:54%;width:23%;height:19%;"
+        onclick="selectRoom('common')">
+        <div class="room-icon">☕</div>
+        <div class="room-name">Common Area</div>
+        <div class="room-sub">Community · Cohort gathering</div>
+      </div>
+
+    </div>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:rgba(56,140,255,0.7);"></div>
+        <span class="legend-label">Youth STEM programs</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:rgba(127,119,221,0.7);"></div>
+        <span class="legend-label">Corporate workforce labs</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:rgba(212,83,126,0.7);"></div>
+        <span class="legend-label">Wellness + community</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:rgba(245,166,35,0.7);"></div>
+        <span class="legend-label">Entry + signature spaces</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail-panel">
+    <div class="detail-card">
+
+      <!-- Default state -->
+      <div class="detail-default" id="detail-default">
+        <div class="hint-icon">⬡</div>
+        <h3>Select a room</h3>
+        <p>Click any room on the blueprint to explore its purpose, programming, and sponsorship opportunity.</p>
+      </div>
+
+      <!-- Dynamic content -->
+      <div class="detail-content" id="detail-content">
+        <div class="detail-header">
+          <div class="detail-color-bar" id="detail-bar"></div>
+          <div class="detail-icon-wrap" id="detail-icon-wrap">
+            <span id="detail-icon"></span>
+          </div>
+          <div class="detail-room-name" id="detail-name"></div>
+          <div class="detail-sponsor-badge" id="detail-sponsor"></div>
+        </div>
+        <div class="detail-body">
+          <p class="detail-desc" id="detail-desc"></p>
+          <div class="detail-tags" id="detail-tags"></div>
+          <div class="detail-outcomes">
+            <div class="detail-outcomes-title">What happens here</div>
+            <div id="detail-outcomes"></div>
+          </div>
+          <a href="partner-with-us.html" class="detail-cta" id="detail-cta">Inquire about this room</a>
+          <a href="apply.html" class="detail-cta-ghost" id="detail-ghost">Apply to the program</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- PARTNER STRIP -->
+<div class="partner-strip">
+  <div class="partner-strip-inner">
+    <h3>Founding sponsor spots are open</h3>
+    <p>Each lab is named for and designed with a founding corporate partner. Partners co-design the curriculum, fund the room, and get first access to every graduate we certify. This is not a donation — it is a talent pipeline built around your workforce needs.</p>
+    <a href="partner-with-us.html">Inquire about founding partnership →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">GA <span>CATALYST</span> INSTITUTE</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="partner-with-us.html">Partner</a></li>
+    <li><a href="apply.html">Apply</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 GA Catalyst Institute · Atlanta, Georgia</div>
+</footer>
+
+<script>
+const rooms = {
+  entry: {
+    name: "Badge Entry Vestibule",
+    icon: "⬡",
+    color: "#F5A623",
+    bg: "rgba(245,166,35,0.15)",
+    sponsor: "Signature entry experience",
+    desc: "The diagonal sliding door is the signature moment of GA Catalyst Institute. Every participant swipes their badge to enter. No badge, no entry. The physical act of swiping in reframes identity before a single session begins — you don't walk into a program here, you go to work.",
+    tags: ["Badge access", "Diagonal entry", "Identity moment", "All participants"],
+    outcomes: [
+      "Every participant enters by swiping a badge they earned",
+      "Badge level determines which interior doors you can access",
+      "The entry experience is the first intervention — before a single lesson",
+      "Visitors and corporate partners experience the same entry to feel the mission"
+    ],
+    cta: "Inquire about the facility",
+    ghost: "Learn about earned access"
+  },
+  robotics: {
+    name: "Advanced Robotics Lab",
+    icon: "🤖",
+    color: "#6BB8FF",
+    bg: "rgba(56,140,255,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "State-of-the-art robotics and hardware engineering space. Houses advanced robotics equipment, coding stations, and hardware prototyping tools. Reserved for Gold and Platinum badge participants. The founding university sponsor brings student mentors into this space each semester — creating a direct bridge between community youth and higher education.",
+    tags: ["Gold badge+", "Robotics", "Hardware", "University partnership"],
+    outcomes: [
+      "Robotics builds, programming challenges, and hardware engineering projects",
+      "University student mentors embedded each semester",
+      "Direct pathway to college engineering programs",
+      "Capstone robotics showcase for corporate partners and families"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to the program"
+  },
+  builders: {
+    name: "Future Builders Lab",
+    icon: "⚡",
+    color: "#3DCFA0",
+    bg: "rgba(29,158,117,0.15)",
+    sponsor: "GA Catalyst flagship program",
+    desc: "The heart of our youth program and our proven foundation. Makey Makey kits, Chibitronics, LED circuits, Piezo buzzers, and physical computing tools fill this room. Our 5-session curriculum — Smart City, Water Systems, Human Electrical Circuits, and the Systems Innovation Challenge — has been delivered for two consecutive years at DeKalb County Government.",
+    tags: ["Grades 3–8", "Proven curriculum", "Physical computing", "Teams of 5"],
+    outcomes: [
+      "Smart City Power Lab — designing infrastructure with LED circuits",
+      "Water Systems Engineering — flood response and hydropower systems",
+      "Human Electrical Circuit Lab — the body as an electrical system",
+      "Systems Innovation Challenge — capstone invention showcase",
+      "Every student takes home a Junior Systems Engineer kit and certificate"
+    ],
+    cta: "Bring this program to your community",
+    ghost: "Apply for youth program"
+  },
+  weekend: {
+    name: "Weekend Track Studio",
+    icon: "🛡",
+    color: "#F08060",
+    bg: "rgba(216,90,48,0.15)",
+    sponsor: "APD partnership · Earned access entry point",
+    desc: "Open every Saturday to community walk-ins and youth referred by the Atlanta Police Department. This is where earned access begins. Participants work toward their Bronze badge here. Attendance, attitude, and effort are tracked — not judged. Passing the transition evaluation earns Silver badge and an invitation to weekday programming.",
+    tags: ["Open to all", "APD referrals", "Saturday sessions", "Bronze badge track"],
+    outcomes: [
+      "Saturday morning sessions open to any motivated participant",
+      "Real tools, real projects, real expectations from day one",
+      "Transition evaluation: portfolio review and interview panel",
+      "Silver badge earned here unlocks weekday program entry",
+      "No cost to participants — funded by government diversion contracts"
+    ],
+    cta: "Partner with us on youth diversion",
+    ghost: "Apply to weekend program"
+  },
+  energy: {
+    name: "Energy Systems Lab",
+    icon: "⚡",
+    color: "#F5A623",
+    bg: "rgba(245,166,35,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Smart grid technology, energy systems, and electrical infrastructure curriculum co-designed with the founding energy sector sponsor. Adults train here for entry-level grid technician and energy operations roles. The founding partner gets first interview access to every graduate certified in this track — eliminating recruiting fees for hard-to-fill roles.",
+    tags: ["Adult workforce", "Energy sector", "Grid technology", "Entry-level pipeline"],
+    outcomes: [
+      "Smart grid fundamentals and electrical infrastructure systems",
+      "Hands-on training with real energy sector tools and equipment",
+      "Curriculum built around the founding partner's actual job requirements",
+      "Graduates certified and interview-ready before roles are posted publicly",
+      "Partner gets named room, curriculum input, and first hire access"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to workforce program"
+  },
+  health: {
+    name: "Healthcare Technology Lab",
+    icon: "🏥",
+    color: "#E87AA8",
+    bg: "rgba(212,83,126,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Biomedical devices, health informatics, patient systems, and healthcare IT training. Curriculum co-designed with the founding healthcare sponsor. Atlanta's healthcare sector is the city's fastest-growing employer — this room feeds that pipeline with candidates who were trained to the sponsor's exact requirements.",
+    tags: ["Healthcare IT", "Biomedical", "Patient systems", "Fastest growing sector"],
+    outcomes: [
+      "Health informatics and patient data systems training",
+      "Biomedical device fundamentals and healthcare technology",
+      "Healthcare IT operations and clinical support systems",
+      "Graduates prepared for entry-level healthcare technology roles",
+      "Founding sponsor gets first interview access to every graduate"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to workforce program"
+  },
+  aviation: {
+    name: "Aviation & Tech Innovation Lab",
+    icon: "✈",
+    color: "#A89FEE",
+    bg: "rgba(127,119,221,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Aviation technology, IT operations, logistics systems, and data operations training built around the founding partner's actual entry-level workforce needs. Atlanta's aviation tech operation is one of the city's largest and least understood talent pipelines. This room puts GA Catalyst graduates at the front of that line.",
+    tags: ["Aviation tech", "IT operations", "Logistics systems", "Data operations"],
+    outcomes: [
+      "Aviation technology systems and operations fundamentals",
+      "IT support and infrastructure for large-scale operations",
+      "Logistics technology and supply chain systems",
+      "Data operations and analytics for aviation environments",
+      "Direct pipeline into one of Atlanta's largest tech employers"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to workforce program"
+  },
+  connectivity: {
+    name: "Digital Connectivity Lab",
+    icon: "📡",
+    color: "#6BB8FF",
+    bg: "rgba(56,140,255,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Digital literacy, media technology, network systems, and content creation training. Connected to digital equity initiatives and national workforce development commitments. This room addresses Atlanta's digital divide directly — preparing participants for careers in communications technology, network operations, and media production.",
+    tags: ["Digital equity", "Network systems", "Media tech", "Content creation"],
+    outcomes: [
+      "Network fundamentals and communications technology",
+      "Digital media production and content creation skills",
+      "Broadband technology and infrastructure operations",
+      "Digital literacy foundations for career-ready participants",
+      "Direct connection to national digital equity workforce programs"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to workforce program"
+  },
+  safety: {
+    name: "Public Safety Technology Center",
+    icon: "🖥",
+    color: "rgba(200,215,235,0.85)",
+    bg: "rgba(180,190,210,0.1)",
+    sponsor: "APD partnership — civilian tech pipeline",
+    desc: "Civilian technology roles within public safety agencies — crime analysis, surveillance systems, dispatch technology, and data operations. Most people don't know public safety agencies hire civilian tech professionals. This room creates that pipeline while deepening the APD partnership that drives our weekend youth diversion program.",
+    tags: ["Civilian roles", "Crime analysis", "Dispatch systems", "Public safety tech"],
+    outcomes: [
+      "Crime analysis and data visualization for public safety",
+      "Dispatch technology and communications systems operations",
+      "Surveillance technology and infrastructure management",
+      "Public safety IT support and systems administration",
+      "APD partnership creates referral pipeline and civilian hiring pathway"
+    ],
+    cta: "Learn about APD partnership",
+    ghost: "Apply to workforce program"
+  },
+  maker: {
+    name: "Maker Space",
+    icon: "🔧",
+    color: "#8DC44A",
+    bg: "rgba(99,153,34,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Open build space with 3D printers, laser cutters, and physical prototyping tools. Available to all badge levels for open build time. This is where capstone projects come to life. The founding sponsor funds the equipment and gets naming rights to the most visible shared space in the building — the room everyone passes through.",
+    tags: ["All badge levels", "3D printing", "Laser cutting", "Open build time"],
+    outcomes: [
+      "Open build sessions for all badge levels and age groups",
+      "3D printing and laser cutting for project prototyping",
+      "Capstone project builds for workforce certifications",
+      "Youth and adult participants share this space — organic mentorship happens here",
+      "Founding sponsor equipment on display and in daily use"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to the program"
+  },
+  build: {
+    name: "Construction Technology Lab",
+    icon: "🏗",
+    color: "#F08060",
+    bg: "rgba(216,90,48,0.15)",
+    sponsor: "Founding sponsor opportunity open",
+    desc: "Hands-on trades technology, smart home systems, and construction tech training. Addresses Atlanta's growing demand for technology-enabled skilled trades workers. Combines traditional trades with modern technology — smart systems, green building tech, and digital project management. The founding sponsor funds the tools and gets first access to every graduate.",
+    tags: ["Trades technology", "Smart home systems", "Green building", "Construction tech"],
+    outcomes: [
+      "Smart home installation and systems integration",
+      "Construction technology and digital project management",
+      "Green building technology and energy-efficient systems",
+      "Trades technology certification preparation",
+      "Entry-level pipeline into one of Atlanta's most in-demand sectors"
+    ],
+    cta: "Sponsor this room",
+    ghost: "Apply to workforce program"
+  },
+  brain: {
+    name: "Brain Break Lab",
+    icon: "🧠",
+    color: "#E87AA8",
+    bg: "rgba(212,83,126,0.15)",
+    sponsor: "Licensed therapist on staff · Georgia State partnership",
+    desc: "The room that makes GA Catalyst different from every other workforce program in Atlanta. Most programs train people technically then watch them fail in the first 90 days — not because they lacked skills, but because they were never prepared for the emotional demands of professional life. We solve that before it happens.",
+    tags: ["All participants", "Licensed therapist", "Mental wellness", "Work-life balance"],
+    outcomes: [
+      "Imposter syndrome work — participants learn they belong before their first interview",
+      "Work stress management before entering a real professional environment",
+      "Financial wellness basics — what to do when the first real paycheck arrives",
+      "Workplace communication skills — feedback, conflict, and supervision navigation",
+      "Georgia State social work practicum students staff this room each semester",
+      "Our 90-day retention rate target is 85%+ — this room is why"
+    ],
+    cta: "Learn about our wellness model",
+    ghost: "Apply to the program"
+  },
+  common: {
+    name: "Common Area",
+    icon: "☕",
+    color: "rgba(200,215,235,0.85)",
+    bg: "rgba(180,190,210,0.08)",
+    sponsor: "Alumni-funded · Community heart of the building",
+    desc: "The gathering space where cohorts connect across programs. Youth from Future Builders Lab mix with adult workforce trainees. Alumni return to mentor current participants. Corporate partner employees hold office hours here. The organic mentorship that happens in this room cannot be programmed — it just happens when you build the right space around the right people.",
+    tags: ["All participants", "Alumni hub", "Corporate office hours", "Organic mentorship"],
+    outcomes: [
+      "Daily gathering space for all program participants across badge levels",
+      "Alumni return visits — the most powerful mentorship in the building",
+      "Corporate partner employees hold weekly office hours here",
+      "Youth and adults share meals, projects, and conversations naturally",
+      "The space that turns a program into a community"
+    ],
+    cta: "Join the GA Catalyst community",
+    ghost: "Apply to the program"
+  }
+};
+
+function selectRoom(id) {
+  document.querySelectorAll('.room').forEach(r => r.classList.remove('active'));
+  document.getElementById('room-' + id).classList.add('active');
+
+  const room = rooms[id];
+
+  document.getElementById('detail-default').style.display = 'none';
+  document.getElementById('detail-content').style.display = 'block';
+
+  document.getElementById('detail-bar').style.background = room.color;
+  document.getElementById('detail-icon-wrap').style.background = room.bg;
+  document.getElementById('detail-icon').textContent = room.icon;
+  document.getElementById('detail-name').textContent = room.name;
+  document.getElementById('detail-sponsor').textContent = room.sponsor;
+  document.getElementById('detail-desc').textContent = room.desc;
+
+  const tagsEl = document.getElementById('detail-tags');
+  tagsEl.innerHTML = room.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
+
+  const outcomesEl = document.getElementById('detail-outcomes');
+  outcomesEl.innerHTML = room.outcomes.map(o =>
+    `<div class="outcome-item"><div class="outcome-dot"></div><span class="outcome-text">${o}</span></div>`
+  ).join('');
+
+  document.getElementById('detail-cta').textContent = room.cta;
+  document.getElementById('detail-ghost').textContent = room.ghost;
+
+  if (window.innerWidth <= 900) {
+    document.querySelector('.detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+selectRoom('entry');
+</script>
+</body>
+</html>
