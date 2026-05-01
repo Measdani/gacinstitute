@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partner Inquiry — GA Catalyst Institute</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand-link" href="index.html">GA Catalyst Institute</a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="programs.html">Programs</a>
+          <a href="partner-with-us.html">Partner</a>
+          <a href="apply.html">Apply</a>
+          <a href="impact.html">Impact</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="page-hero page-hero--partner">
+          <p class="eyebrow">Partner inquiry</p>
+          <h1>Tell us your workforce need. We’ll build the pipeline.</h1>
+          <p class="lede">
+            Use this form to share your goals, the roles you need, and the room concept that matters most for your team.
+          </p>
+        </section>
+
+        <section class="section form-section">
+          <form class="contact-form" action="mailto:partners@gacatalystinstitute.com" method="post" enctype="text/plain">
+            <label for="inquiry-name">Name</label>
+            <input id="inquiry-name" name="Name" required />
+
+            <label for="inquiry-company">Company</label>
+            <input id="inquiry-company" name="Company" required />
+
+            <label for="inquiry-role">Role</label>
+            <input id="inquiry-role" name="Role" required />
+
+            <label for="inquiry-room">Which room interests you?</label>
+            <select id="inquiry-room" name="Room">
+              <option>GA Power Grid Lab</option>
+              <option>Delta Innovation Runway</option>
+              <option>Community Builder Studio</option>
+              <option>Brain Break Lab</option>
+            </select>
+
+            <label for="inquiry-needs">What workforce need do you have?</label>
+            <textarea id="inquiry-needs" name="Needs" rows="4" required></textarea>
+
+            <label for="inquiry-details">Additional details</label>
+            <textarea id="inquiry-details" name="Details" rows="4"></textarea>
+
+            <button class="button button-gold" type="submit">Send partner inquiry</button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Atlanta, Georgia • info@gacatalystinstitute.com</p>
+      </footer>
+    </div>
+    <script defer src="script.js"></script>
+  </body>
+</html>
