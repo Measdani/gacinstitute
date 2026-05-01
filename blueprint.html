@@ -10,23 +10,30 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #0a1628;
-    --navy-mid: #1B3A6B;
-    --gold: #F5A623;
-    --gold-dim: rgba(245,166,35,0.15);
-    --gold-border: rgba(245,166,35,0.4);
-    --blue-line: rgba(100,160,255,0.12);
-    --blue-border: rgba(100,160,255,0.35);
-    --text-primary: #FFFFFF;
-    --text-secondary: rgba(180,210,255,0.7);
-    --text-muted: rgba(100,150,200,0.5);
+    --navy: #020304;
+    --navy-mid: #101112;
+    --gold: #d9aa3a;
+    --gold-bright: #f3d27a;
+    --gold-deep: #8d641a;
+    --gold-dim: rgba(217,170,58,0.12);
+    --gold-border: rgba(217,170,58,0.38);
+    --blue-line: rgba(255,255,255,0.055);
+    --blue-border: rgba(255,255,255,0.12);
+    --text-primary: #f5f6f7;
+    --text-secondary: #c8c9c9;
+    --text-muted: #929496;
+    --panel: rgba(255,255,255,0.045);
+    --panel-strong: rgba(255,255,255,0.075);
     --grid-size: 32px;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--navy);
+    background:
+      radial-gradient(circle at 74% 16%, rgba(217,170,58,0.22), transparent 26%),
+      radial-gradient(circle at 18% 0%, rgba(255,255,255,0.12), transparent 24%),
+      linear-gradient(135deg, #020304 0%, #101112 52%, #030405 100%);
     color: var(--text-primary);
     font-family: 'DM Sans', sans-serif;
     min-height: 100vh;
@@ -55,9 +62,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 40px;
-    background: rgba(10,22,40,0.92);
+    background: rgba(5,6,7,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--blue-border);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.42);
   }
 
   .nav-logo {
@@ -68,23 +76,25 @@
   }
 
   .nav-logo img {
-    height: 36px;
+    height: 46px;
     width: auto;
+    filter: drop-shadow(0 8px 18px rgba(217,170,58,0.18));
   }
 
   .nav-wordmark {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 1px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   .nav-wordmark span { color: var(--gold); }
 
   .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 8px;
     list-style: none;
   }
 
@@ -92,17 +102,19 @@
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding: 10px 12px;
+    border-radius: 999px;
+    transition: color 0.2s, background 0.2s;
   }
 
-  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-links a:hover, .nav-links a.active { background: rgba(217,170,58,0.12); color: var(--gold-bright); }
 
   .nav-cta {
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 52%, var(--gold-deep));
     color: var(--navy) !important;
-    font-weight: 500 !important;
+    font-weight: 800 !important;
     padding: 8px 20px;
     border-radius: 4px;
     transition: opacity 0.2s !important;
@@ -116,7 +128,7 @@
     z-index: 1;
     padding: 140px 40px 60px;
     text-align: center;
-    max-width: 800px;
+    max-width: 880px;
     margin: 0 auto;
   }
 
@@ -125,10 +137,10 @@
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 4px;
-    color: var(--gold);
+    color: var(--gold-bright);
     border: 1px solid var(--gold-border);
     padding: 6px 16px;
-    border-radius: 2px;
+    border-radius: 999px;
     margin-bottom: 24px;
     text-transform: uppercase;
   }
@@ -144,7 +156,7 @@
 
   .hero h1 em {
     font-style: normal;
-    color: var(--gold);
+    color: var(--gold-bright);
   }
 
   .hero p {
@@ -162,14 +174,14 @@
     gap: 48px;
     margin-top: 40px;
     padding-top: 32px;
-    border-top: 1px solid var(--blue-border);
+    border-top: 1px solid var(--gold-border);
   }
 
   .hero-stat-num {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 36px;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--gold-bright);
     display: block;
     line-height: 1;
   }
@@ -198,7 +210,9 @@
 
   /* ── BLUEPRINT PANEL ── */
   .blueprint-panel {
-    background: rgba(10,22,40,0.8);
+    background:
+      linear-gradient(145deg, var(--panel-strong), var(--panel)),
+      rgba(5,6,7,0.9);
     border: 1px solid var(--blue-border);
     border-radius: 8px;
     padding: 24px;
@@ -211,8 +225,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(100,160,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(100,160,255,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(217,170,58,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
     background-size: 24px 24px;
     pointer-events: none;
   }
@@ -262,14 +276,14 @@
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1.05;
-    border: 1.5px solid rgba(100,160,255,0.4);
+    border: 1.5px solid rgba(217,170,58,0.34);
     border-radius: 4px;
     overflow: visible;
   }
 
   .room {
     position: absolute;
-    border: 1px solid rgba(100,160,255,0.4);
+    border: 1px solid rgba(255,255,255,0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -284,7 +298,7 @@
   .room:hover, .room.active {
     z-index: 20;
     transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(245,166,35,0.2);
+    box-shadow: 0 0 20px rgba(217,170,58,0.22);
   }
 
   .room.active { border-width: 2px !important; }
@@ -299,51 +313,51 @@
     border-radius: 8px;
     font-size: 7px;
     letter-spacing: 0.3px;
-    background: rgba(245,166,35,0.15);
-    color: var(--gold);
-    border: 1px solid rgba(245,166,35,0.3);
+    background: rgba(217,170,58,0.14);
+    color: var(--gold-bright);
+    border: 1px solid rgba(217,170,58,0.3);
     white-space: nowrap;
     transition: background 0.2s;
   }
 
-  .room:hover .sponsor-pill { background: rgba(245,166,35,0.3); }
+  .room:hover .sponsor-pill { background: rgba(217,170,58,0.26); }
 
   /* Room color themes */
-  .r-gold { background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.5) !important; }
-  .r-gold .room-name { color: #F5A623; }
+  .r-gold { background: rgba(217,170,58,0.11); border-color: rgba(217,170,58,0.5) !important; }
+  .r-gold .room-name { color: var(--gold-bright); }
 
   .r-blue { background: rgba(56,140,255,0.08); border-color: rgba(56,140,255,0.4) !important; }
-  .r-blue .room-name { color: #6BB8FF; }
+  .r-blue .room-name { color: #d7d9dc; }
 
   .r-teal { background: rgba(29,158,117,0.1); border-color: rgba(29,158,117,0.5) !important; }
-  .r-teal .room-name { color: #3DCFA0; }
+  .r-teal .room-name { color: #cfd2d4; }
 
   .r-purple { background: rgba(127,119,221,0.1); border-color: rgba(127,119,221,0.5) !important; }
-  .r-purple .room-name { color: #A89FEE; }
+  .r-purple .room-name { color: #e5d6a4; }
 
   .r-coral { background: rgba(216,90,48,0.1); border-color: rgba(216,90,48,0.5) !important; }
-  .r-coral .room-name { color: #F08060; }
+  .r-coral .room-name { color: #d6b862; }
 
   .r-green { background: rgba(99,153,34,0.1); border-color: rgba(99,153,34,0.5) !important; }
-  .r-green .room-name { color: #8DC44A; }
+  .r-green .room-name { color: #ddd4b6; }
 
   .r-silver { background: rgba(180,190,210,0.06); border-color: rgba(180,190,210,0.3) !important; }
   .r-silver .room-name { color: rgba(200,215,235,0.85); }
 
   .r-pink { background: rgba(212,83,126,0.09); border-color: rgba(212,83,126,0.45) !important; }
-  .r-pink .room-name { color: #E87AA8; }
+  .r-pink .room-name { color: #ead08a; }
 
   /* Corridor */
   .corridor {
     position: absolute;
-    background: rgba(100,160,255,0.04);
-    border: 1px dashed rgba(100,160,255,0.15);
+    background: rgba(255,255,255,0.035);
+    border: 1px dashed rgba(217,170,58,0.18);
   }
 
   .zone-tag {
     position: absolute;
     font-size: 7px;
-    color: rgba(100,160,255,0.35);
+    color: rgba(255,255,255,0.28);
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: 500;
@@ -411,7 +425,9 @@
   }
 
   .detail-card {
-    background: rgba(10,22,40,0.9);
+    background:
+      linear-gradient(145deg, var(--panel-strong), var(--panel)),
+      rgba(5,6,7,0.94);
     border: 1px solid var(--blue-border);
     border-radius: 8px;
     overflow: hidden;
@@ -527,7 +543,7 @@
     border: 1px solid var(--blue-border);
     color: var(--text-secondary);
     letter-spacing: 0.5px;
-    background: rgba(100,160,255,0.05);
+    background: rgba(255,255,255,0.045);
   }
 
   .detail-outcomes { margin-bottom: 24px; }
@@ -568,7 +584,7 @@
     display: block;
     width: 100%;
     padding: 12px;
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 52%, var(--gold-deep));
     color: var(--navy);
     text-align: center;
     font-family: 'Barlow Condensed', sans-serif;
@@ -621,14 +637,16 @@
     border-radius: 8px;
     padding: 28px 40px;
     text-align: center;
-    background: var(--gold-dim);
+    background:
+      linear-gradient(135deg, rgba(217,170,58,0.12), rgba(255,255,255,0.035)),
+      rgba(5,6,7,0.86);
   }
 
   .partner-strip h3 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 22px;
     font-weight: 700;
-    color: var(--gold);
+    color: var(--gold-bright);
     letter-spacing: 1px;
     margin-bottom: 8px;
   }
@@ -645,7 +663,7 @@
   .partner-strip a {
     display: inline-block;
     padding: 12px 32px;
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold) 52%, var(--gold-deep));
     color: var(--navy);
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 14px;
@@ -932,7 +950,7 @@
         <span class="legend-label">Wellness + community</span>
       </div>
       <div class="legend-item">
-        <div class="legend-dot" style="background:rgba(245,166,35,0.7);"></div>
+        <div class="legend-dot" style="background:rgba(217,170,58,0.8);"></div>
         <span class="legend-label">Entry + signature spaces</span>
       </div>
     </div>
@@ -1004,8 +1022,8 @@ const rooms = {
   entry: {
     name: "Badge Entry Vestibule",
     icon: "⬡",
-    color: "#F5A623",
-    bg: "rgba(245,166,35,0.15)",
+    color: "#f3d27a",
+    bg: "rgba(217,170,58,0.15)",
     sponsor: "Signature entry experience",
     desc: "The diagonal sliding door is the signature moment of GA Catalyst Institute. Every participant swipes their badge to enter. No badge, no entry. The physical act of swiping in reframes identity before a single session begins — you don't walk into a program here, you go to work.",
     tags: ["Badge access", "Diagonal entry", "Identity moment", "All participants"],
@@ -1021,7 +1039,7 @@ const rooms = {
   robotics: {
     name: "Advanced Robotics Lab",
     icon: "🤖",
-    color: "#6BB8FF",
+    color: "#d7d9dc",
     bg: "rgba(56,140,255,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "State-of-the-art robotics and hardware engineering space. Houses advanced robotics equipment, coding stations, and hardware prototyping tools. Reserved for Gold and Platinum badge participants. The founding university sponsor brings student mentors into this space each semester — creating a direct bridge between community youth and higher education.",
@@ -1038,7 +1056,7 @@ const rooms = {
   builders: {
     name: "Future Builders Lab",
     icon: "⚡",
-    color: "#3DCFA0",
+    color: "#cfd2d4",
     bg: "rgba(29,158,117,0.15)",
     sponsor: "GA Catalyst flagship program",
     desc: "The heart of our youth program and our proven foundation. Makey Makey kits, Chibitronics, LED circuits, Piezo buzzers, and physical computing tools fill this room. Our 5-session curriculum — Smart City, Water Systems, Human Electrical Circuits, and the Systems Innovation Challenge — has been delivered for two consecutive years at DeKalb County Government.",
@@ -1056,7 +1074,7 @@ const rooms = {
   weekend: {
     name: "Weekend Track Studio",
     icon: "🛡",
-    color: "#F08060",
+    color: "#d6b862",
     bg: "rgba(216,90,48,0.15)",
     sponsor: "APD partnership · Earned access entry point",
     desc: "Open every Saturday to community walk-ins and youth referred by the Atlanta Police Department. This is where earned access begins. Participants work toward their Bronze badge here. Attendance, attitude, and effort are tracked — not judged. Passing the transition evaluation earns Silver badge and an invitation to weekday programming.",
@@ -1074,8 +1092,8 @@ const rooms = {
   energy: {
     name: "Energy Systems Lab",
     icon: "⚡",
-    color: "#F5A623",
-    bg: "rgba(245,166,35,0.15)",
+    color: "#f3d27a",
+    bg: "rgba(217,170,58,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Smart grid technology, energy systems, and electrical infrastructure curriculum co-designed with the founding energy sector sponsor. Adults train here for entry-level grid technician and energy operations roles. The founding partner gets first interview access to every graduate certified in this track — eliminating recruiting fees for hard-to-fill roles.",
     tags: ["Adult workforce", "Energy sector", "Grid technology", "Entry-level pipeline"],
@@ -1092,7 +1110,7 @@ const rooms = {
   health: {
     name: "Healthcare Technology Lab",
     icon: "🏥",
-    color: "#E87AA8",
+    color: "#ead08a",
     bg: "rgba(212,83,126,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Biomedical devices, health informatics, patient systems, and healthcare IT training. Curriculum co-designed with the founding healthcare sponsor. Atlanta's healthcare sector is the city's fastest-growing employer — this room feeds that pipeline with candidates who were trained to the sponsor's exact requirements.",
@@ -1110,7 +1128,7 @@ const rooms = {
   aviation: {
     name: "Aviation & Tech Innovation Lab",
     icon: "✈",
-    color: "#A89FEE",
+    color: "#e5d6a4",
     bg: "rgba(127,119,221,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Aviation technology, IT operations, logistics systems, and data operations training built around the founding partner's actual entry-level workforce needs. Atlanta's aviation tech operation is one of the city's largest and least understood talent pipelines. This room puts GA Catalyst graduates at the front of that line.",
@@ -1128,7 +1146,7 @@ const rooms = {
   connectivity: {
     name: "Digital Connectivity Lab",
     icon: "📡",
-    color: "#6BB8FF",
+    color: "#d7d9dc",
     bg: "rgba(56,140,255,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Digital literacy, media technology, network systems, and content creation training. Connected to digital equity initiatives and national workforce development commitments. This room addresses Atlanta's digital divide directly — preparing participants for careers in communications technology, network operations, and media production.",
@@ -1164,7 +1182,7 @@ const rooms = {
   maker: {
     name: "Maker Space",
     icon: "🔧",
-    color: "#8DC44A",
+    color: "#ddd4b6",
     bg: "rgba(99,153,34,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Open build space with 3D printers, laser cutters, and physical prototyping tools. Available to all badge levels for open build time. This is where capstone projects come to life. The founding sponsor funds the equipment and gets naming rights to the most visible shared space in the building — the room everyone passes through.",
@@ -1182,7 +1200,7 @@ const rooms = {
   build: {
     name: "Construction Technology Lab",
     icon: "🏗",
-    color: "#F08060",
+    color: "#d6b862",
     bg: "rgba(216,90,48,0.15)",
     sponsor: "Founding sponsor opportunity open",
     desc: "Hands-on trades technology, smart home systems, and construction tech training. Addresses Atlanta's growing demand for technology-enabled skilled trades workers. Combines traditional trades with modern technology — smart systems, green building tech, and digital project management. The founding sponsor funds the tools and gets first access to every graduate.",
@@ -1200,7 +1218,7 @@ const rooms = {
   brain: {
     name: "Brain Break Lab",
     icon: "🧠",
-    color: "#E87AA8",
+    color: "#ead08a",
     bg: "rgba(212,83,126,0.15)",
     sponsor: "Licensed therapist on staff · Georgia State partnership",
     desc: "The room that makes GA Catalyst different from every other workforce program in Atlanta. Most programs train people technically then watch them fail in the first 90 days — not because they lacked skills, but because they were never prepared for the emotional demands of professional life. We solve that before it happens.",
